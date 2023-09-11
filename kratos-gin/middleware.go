@@ -19,9 +19,8 @@ func GinLogger(logger log.Logger) gin.HandlerFunc {
 		start := time.Now()
 		path := c.Request.URL.Path
 		query := c.Request.URL.RawQuery
-
 		c.Next()
-
+		// 记录耗时
 		cost := time.Since(start)
 		_ = logger.Log(log.LevelInfo,
 			"path", path,
@@ -34,6 +33,7 @@ func GinLogger(logger log.Logger) gin.HandlerFunc {
 			"errors", c.Errors.ByType(gin.ErrorTypePrivate).String(), // 私有错误
 			"cost", cost, // 耗时
 		)
+
 	}
 }
 

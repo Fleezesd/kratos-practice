@@ -43,6 +43,7 @@ func (tr *Transport) Endpoint() string {
 
 func (tr *Transport) Operation() string {
 	return tr.operation
+
 }
 
 // RequestHeader return transport request header
